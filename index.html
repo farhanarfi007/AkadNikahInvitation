@@ -48,11 +48,16 @@ footer{text-align:center;padding:55px 20px 90px;background:#f6f2e9}footer h2{fon
 .music-toggle{position:fixed;bottom:22px;right:22px;z-index:10;display:flex;align-items:center;gap:9px;border:1px solid #d9c8a9;background:#fffdf9ee;color:#806a46;border-radius:100px;padding:13px 17px;box-shadow:0 8px 30px #51442b26;backdrop-filter:blur(10px);font:600 11px "DM Sans",sans-serif;letter-spacing:.07em;cursor:pointer;transition:transform .2s}
 .music-toggle:hover{transform:translateY(-2px)}.music-toggle[aria-pressed="false"]{color:#807d77}
 @media(max-width:520px){.music-toggle{bottom:16px;right:14px;padding:12px 14px}}
+.intro-card .intro-gif{display:block;width:min(48vw,190px);height:auto;max-height:190px;object-fit:contain;margin:0 auto 14px;border-radius:8px}
+.intro-card:has(.intro-gif){min-height:min(690px,94dvh);padding:30px 24px}
+.intro-card:has(.intro-gif) h2{margin:20px 0 18px;font-size:clamp(52px,12vw,75px)}
+.intro-card:has(.intro-gif) .btn{margin-top:12px}
+@media(max-height:680px){.intro-card .intro-gif{max-height:115px;width:115px}.intro-card:has(.intro-gif){min-height:auto;padding:22px}.intro-card:has(.intro-gif) h2{font-size:52px;margin:15px 0}}
 </style>
 </head>
 <body>
 <div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Buka jemputan">
- <div class="intro-card"><div class="eyebrow">Dengan penuh kesyukuran</div><h2>Farhan <em>&</em> Farwizah</h2><div class="rule"></div><p>Ijab &amp; Qabul<br>Ahad · 6 Disember 2026</p><button class="btn" id="openBtn">✉ &nbsp; Buka Jemputan</button></div>
+ <div class="intro-card"><img class="intro-gif" src="F F.gif" alt="Animasi F dan F" width="210" height="210"><div class="eyebrow">Dengan penuh kesyukuran</div><h2>Farhan <em>&</em> Farwizah</h2><div class="rule"></div><p>Ijab &amp; Qabul<br>Ahad · 6 Disember 2026</p><button class="btn" id="openBtn">✉ &nbsp; Buka Jemputan</button></div>
 </div>
 <audio id="weddingMusic" src="wedding-music.mp3" preload="none" loop></audio>
 <button type="button" class="music-toggle" id="musicToggle" aria-label="Mainkan muzik" aria-pressed="false"><span id="musicIcon" aria-hidden="true">♫</span><span id="musicText">Muzik: OFF</span></button>
