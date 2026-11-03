@@ -38,6 +38,12 @@ footer{text-align:center;padding:55px 20px 90px;background:#f6f2e9}footer h2{fon
 .intro-card h2{font-size:clamp(64px,14vw,90px);line-height:.75;margin:40px 0 26px}.intro-card h2 em{display:block;font-size:.6em;color:var(--gold);line-height:1.4}.intro-card p{font-size:12px;line-height:1.8;color:#777}.intro-card .btn{margin-top:22px}
 @media(max-width:520px){.nav{gap:10px}.nav a{font-size:9px}.hero{min-height:540px}.section{padding:60px 20px}.contacts{grid-template-columns:1fr}.schedule-row{grid-template-columns:95px 1fr}.topbar{padding:14px 16px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+.invitation-welcome{position:relative;background:radial-gradient(ellipse at center,#fff 20%,#faf7f1 100%);padding-top:80px;padding-bottom:75px}
+.invite-ornament{font:36px "Cormorant Garamond",serif;color:#ad946c;margin:20px auto 12px}
+.invitation-welcome .invitation-copy{font:italic clamp(22px,4vw,30px)/1.65 "Cormorant Garamond",serif;color:#645e54;max-width:640px;margin:0 auto}
+.invitation-welcome .invitation-copy span{display:inline-block;font-style:normal;font-weight:600;color:#8f7752;font-size:clamp(20px,3.7vw,27px);margin:8px 0}
+.invite-divider{display:flex;align-items:center;gap:16px;justify-content:center;margin:28px auto 0;color:#ad946c}
+.invite-divider:before,.invite-divider:after{content:"";width:90px;height:1px;background:#d7c8ad}
 </style>
 </head>
 <body>
@@ -48,7 +54,12 @@ footer{text-align:center;padding:55px 20px 90px;background:#f6f2e9}footer h2{fon
 <header class="topbar"><a class="brand" href="#home">F <span style="color:#c2af8c">&</span> F</a><nav class="nav" aria-label="Navigasi"><a href="#jemputan">Jemputan</a><a href="#aturcara">Aturcara</a><a href="#lokasi">Lokasi</a><a href="#rsvp">RSVP</a><a href="#hubungi">Hubungi</a></nav></header>
 <main>
 <section class="hero" id="home"><div class="hero-inner reveal"><div class="eyebrow">Ijab &amp; Qabul · 1448H</div><h1>Farhan <em>&</em> Farwizah</h1><div class="rule"></div><div class="hero-date">AHAD · 06 DISEMBER 2026</div><p class="hero-desc">Dua hati, satu ikatan suci.</p><a href="#jemputan" class="btn secondary">Lihat Jemputan ↓</a></div></section>
-<section id="jemputan" class="section"><div class="reveal"><div class="eyebrow">Dengan segala hormatnya</div><h2>Jemputan Istimewa</h2><p>Dengan penuh kesyukuran, kami menjemput Dato’ / Datin / Tuan / Puan / Encik / Cik<br>untuk meraikan hari bahagia kami.</p></div></section>
+<section id="jemputan" class="section invitation-welcome"><div class="reveal">
+<div class="eyebrow">Dengan segala hormatnya</div>
+<div class="invite-ornament" aria-hidden="true">❦</div>
+<p class="invitation-copy">Dan penuh kesyukuran, kami menjemput<br><span>Dato’ / Datin / Tuan / Puan / Encik / Cik</span><br>untuk meraikan hari bahagia kami.</p>
+<div class="invite-divider" aria-hidden="true"><span>✧</span></div>
+</div></section>
 <div class="invite-frame"><img src="front.png" alt="Kad jemputan hadapan Farhan dan Farwizah" loading="lazy"><div class="invite-label">Kad Jemputan · Hadapan</div></div>
 <div class="invite-frame"><img src="back.png" alt="Kad jemputan belakang dengan maklumat majlis" loading="lazy"><div class="invite-label">Kad Jemputan · Maklumat Majlis</div></div>
 <section class="section" id="countdown-section"><div class="reveal"><div class="eyebrow">Menghitung hari</div><h2>Menuju Hari Bahagia</h2><p>Detik istimewa semakin hampir.</p><div class="countdown" aria-label="Kiraan detik majlis"><div><strong id="days">00</strong><span>Hari</span></div><div><strong id="hours">00</strong><span>Jam</span></div><div><strong id="minutes">00</strong><span>Minit</span></div><div><strong id="seconds">00</strong><span>Saat</span></div></div></div></section>
@@ -62,7 +73,7 @@ footer{text-align:center;padding:55px 20px 90px;background:#f6f2e9}footer h2{fon
 /* EDIT FOUR CONTACTS HERE. Replace the fourth empty number when ready. */
 const CONTACTS=[
  {name:"Fadhli",phone:"0192306870",side:"Keluarga pihak pengantin perempuan"},
- {name:"Amirruddin",phone:"01123285919",side:"Keluarga pihak pengantin lelaki"},
+ {name:"Amirruddin",phone:"012237869",side:"Keluarga pihak pengantin lelaki"},
  {name:"Roslina",phone:"0109276650",side:"Keluarga pihak pengantin perempuan"},
  {name:"Rafiza",phone:"0126477869",side:"Keluarga pihak pengantin lelaki"}
 ];
