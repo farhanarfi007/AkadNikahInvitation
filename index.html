@@ -44,12 +44,18 @@ footer{text-align:center;padding:55px 20px 90px;background:#f6f2e9}footer h2{fon
 .invitation-welcome .invitation-copy span{display:inline-block;font-style:normal;font-weight:600;color:#8f7752;font-size:clamp(20px,3.7vw,27px);margin:8px 0}
 .invite-divider{display:flex;align-items:center;gap:16px;justify-content:center;margin:28px auto 0;color:#ad946c}
 .invite-divider:before,.invite-divider:after{content:"";width:90px;height:1px;background:#d7c8ad}
+
+.music-toggle{position:fixed;bottom:22px;right:22px;z-index:10;display:flex;align-items:center;gap:9px;border:1px solid #d9c8a9;background:#fffdf9ee;color:#806a46;border-radius:100px;padding:13px 17px;box-shadow:0 8px 30px #51442b26;backdrop-filter:blur(10px);font:600 11px "DM Sans",sans-serif;letter-spacing:.07em;cursor:pointer;transition:transform .2s}
+.music-toggle:hover{transform:translateY(-2px)}.music-toggle[aria-pressed="false"]{color:#807d77}
+@media(max-width:520px){.music-toggle{bottom:16px;right:14px;padding:12px 14px}}
 </style>
 </head>
 <body>
 <div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Buka jemputan">
  <div class="intro-card"><div class="eyebrow">Dengan penuh kesyukuran</div><h2>Farhan <em>&</em> Farwizah</h2><div class="rule"></div><p>Ijab &amp; Qabul<br>Ahad · 6 Disember 2026</p><button class="btn" id="openBtn">✉ &nbsp; Buka Jemputan</button></div>
 </div>
+<audio id="weddingMusic" src="wedding-music.mp3" preload="none" loop></audio>
+<button type="button" class="music-toggle" id="musicToggle" aria-label="Mainkan muzik" aria-pressed="false"><span id="musicIcon" aria-hidden="true">♫</span><span id="musicText">Muzik: OFF</span></button>
 <div class="shell">
 <header class="topbar"><a class="brand" href="#home">F <span style="color:#c2af8c">&</span> F</a><nav class="nav" aria-label="Navigasi"><a href="#jemputan">Jemputan</a><a href="#aturcara">Aturcara</a><a href="#lokasi">Lokasi</a><a href="#rsvp">RSVP</a><a href="#hubungi">Hubungi</a></nav></header>
 <main>
@@ -88,9 +94,19 @@ CONTACTS.forEach(c=>{
  const side=document.createElement("small");side.textContent=c.side||"";side.style.color="#77776f";side.style.lineHeight="1.5";info.append(name,side,phone);const icon=document.createElement("span");icon.className="icon";icon.textContent="☎";
  el.append(info,icon);contacts.append(el);
 });
+const weddingMusic=document.getElementById("weddingMusic");
+const musicToggle=document.getElementById("musicToggle");
+const musicIcon=document.getElementById("musicIcon");
+const musicText=document.getElementById("musicText");
+weddingMusic.volume=0.35;
+function syncMusicButton(){const playing=!weddingMusic.paused;musicToggle.setAttribute("aria-pressed",String(playing));musicToggle.setAttribute("aria-label",playing?"Hentikan muzik":"Mainkan muzik");musicIcon.textContent=playing?"♫":"♪";musicText.textContent=playing?"Muzik: ON":"Muzik: OFF";}
+function startWeddingMusic(){const p=weddingMusic.play();if(p&&p.catch)p.catch(()=>syncMusicButton());syncMusicButton();}
+musicToggle.addEventListener("click",()=>{if(weddingMusic.paused)startWeddingMusic();else weddingMusic.pause();});
+weddingMusic.addEventListener("play",syncMusicButton);
+weddingMusic.addEventListener("pause",syncMusicButton);
 const intro=document.getElementById("intro");
 document.getElementById("openBtn").addEventListener("click",()=>{
- intro.classList.add("hidden");document.body.style.overflow="";
+ intro.classList.add("hidden");document.body.style.overflow="";startWeddingMusic();
  setTimeout(()=>intro.remove(),850);
 });
 document.body.style.overflow="hidden";
